@@ -5,20 +5,24 @@ const initialState = {
   items: [],
   isLoading: false,
   error: null,
+  total: 0,
 };
 
 const campersSlice = createSlice({
   name: 'campers',
   initialState,
   reducers: {
-    clearItems: state => {
+    clearState: state => {
       state.items = [];
+      state.total = 0;
+      state.error = null;
     },
   },
   extraReducers: builder => {
     builder
       .addCase(fetchCampers.fulfilled, (state, { payload }) => {
         state.items = [...state.items, ...payload.items];
+        state.total = payload.total;
       })
       .addMatcher(
         action => action.type.endsWith('/fulfilled'),
@@ -44,8 +48,9 @@ const campersSlice = createSlice({
   },
 });
 
+export const selectTotal = state => state.campers.total;
 export const selectCampers = state => state.campers.items;
 
-export const { clearItems } = campersSlice.actions;
+export const { clearState } = campersSlice.actions;
 
 export const campersReducer = campersSlice.reducer;
