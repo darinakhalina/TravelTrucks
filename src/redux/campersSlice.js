@@ -7,6 +7,7 @@ const initialState = {
   isLoading: false,
   error: null,
   total: 0,
+  currentPage: 1,
 };
 
 const campersSlice = createSlice({
@@ -20,6 +21,12 @@ const campersSlice = createSlice({
     },
     clearSelectedItem: state => {
       state.selectedItem = null;
+    },
+    setCurrentPage: (state, { payload }) => {
+      state.currentPage = payload;
+    },
+    resetCurrentPage: state => {
+      state.currentPage = 1; // add const here for page
     },
   },
   extraReducers: builder => {
@@ -56,10 +63,12 @@ const campersSlice = createSlice({
 });
 
 export const selectTotal = state => state.campers.total;
+export const selectCurrentPage = state => state.campers.currentPage;
 export const selectCampers = state => state.campers.items;
 export const selectIsLoading = state => state.campers.isLoading;
 export const selectSelectedCamper = state => state.campers.selectedItem;
 
-export const { clearItemsState, clearSelectedItem } = campersSlice.actions;
+export const { clearItemsState, clearSelectedItem, resetCurrentPage, setCurrentPage } =
+  campersSlice.actions;
 
 export const campersReducer = campersSlice.reducer;

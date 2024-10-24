@@ -25,7 +25,6 @@ export const fetchCamper = createAsyncThunk('campers/fetchOne', async (id, thunk
 });
 
 const buildQueryParams = (page, limit, params) => {
-  console.log(params);
   return {
     page,
     limit,

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchCampers } from '../../redux/campersOps';
@@ -7,6 +7,9 @@ import {
   clearItemsState,
   selectTotal,
   selectIsLoading,
+  resetCurrentPage,
+  setCurrentPage,
+  selectCurrentPage,
 } from '../../redux/campersSlice';
 import { setFilters, selectFilters, clearFilters } from '../../redux/filtersSlice';
 import FiltersForm from '../../components/FiltersForm/FiltersForm';
@@ -17,18 +20,20 @@ const CatalogPage = () => {
   const total = useSelector(selectTotal);
   const isLoading = useSelector(selectIsLoading);
   const filtersFromStore = useSelector(selectFilters);
+  const cuttentPage = useSelector(selectCurrentPage);
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1); // fix - create slice for ui
 
   useEffect(() => {
     const fetchCampersLocal = async () => {
-      await dispatch(fetchCampers({ page: 1, limit: 5 }));
+      dispatch(setCurrentPage(1));
+      await dispatch(fetchCampers({ page: 1, limit: 5 })); // add consts for first page and limits
     };
     fetchCampersLocal();
 
     return () => {
       dispatch(clearItemsState());
       dispatch(clearFilters());
+      dispatch(resetCurrentPage());
     };
   }, [dispatch]);
 
@@ -36,12 +41,14 @@ const CatalogPage = () => {
   const onSubmit = async filters => {
     dispatch(clearItemsState());
     dispatch(setFilters(filters));
+    dispatch(setCurrentPage(1));
     await dispatch(fetchCampers({ page: 1, limit: 5, params: filters }));
   };
 
   const onMore = async () => {
-    setCurrentPage(currentPage + 1);
-    await dispatch(fetchCampers({ page: currentPage + 1, limit: 5, params: filtersFromStore }));
+    const nextPage = cuttentPage + 1;
+    dispatch(setCurrentPage(nextPage));
+    await dispatch(fetchCampers({ page: nextPage, limit: 5, params: filtersFromStore }));
   };
 
   const handleNavigation = id => {
