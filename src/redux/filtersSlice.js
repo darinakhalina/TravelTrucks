@@ -14,15 +14,15 @@ const filtersSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    setFilter: (state, { payload }) => {
-      state = payload;
+    setFilters: (state, { payload }) => {
+      return { ...state, ...payload };
     },
     clearFilters: () => initialState,
   },
 });
 
-export const selectNameFilter = state => state.filters;
+export const selectFilters = state => state.filters;
 
-export const { setFilter, clearFilters } = filtersSlice.actions;
+export const { setFilters, clearFilters } = filtersSlice.actions;
 
 export const filtersReducer = filtersSlice.reducer;

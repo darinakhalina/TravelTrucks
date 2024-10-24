@@ -1,41 +1,83 @@
-import { useId } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-
-const initialValues = {
-  name: '',
-};
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(1, 'Must be at least 1 characters')
-    .max(50, 'Must be less than 50 characters')
-    .required('Name is required'),
-});
+import { Formik, Form, Field } from 'formik';
+import { useSelector } from 'react-redux';
+import { selectFilters } from '../../redux/filtersSlice';
 
 function FiltersForm({ onSubmit }) {
-  const nameId = useId();
+  // const dispatch = useDispatch();
+  const initialState = useSelector(selectFilters);
 
   return (
     <Formik
-      initialValues={initialValues}
-      validateOnChange={false}
-      onSubmit={async (values, { setSubmitting }) => {
-        // pass filters
-        await onSubmit(values);
-        setSubmitting(false);
-        // resetForm();
+      initialValues={initialState}
+      onSubmit={values => {
+        onSubmit(values);
       }}
-      validationSchema={validationSchema}
     >
-      {({ isSubmitting }) => (
+      {({ values, handleChange }) => (
         <Form>
-          <label htmlFor={nameId}>Name</label>
-          <Field type="text" name="name" id={nameId} />
-          <ErrorMessage name="name" component="div" />
-          <button type="submit" disabled={isSubmitting}>
-            Add name
-          </button>
+          <div>
+            <label htmlFor="location">Location</label>
+            <Field type="text" name="location" />
+          </div>
+
+          <div>
+            <label>Form</label>
+            <div>
+              <label>
+                <Field type="radio" name="form" value="van" />
+                van
+              </label>
+              <label>
+                <Field type="radio" name="form" value="fullyIntegrated" />
+                fullyIntegrated
+              </label>
+              <label>
+                <Field type="radio" name="form" value="alcove" />
+                alcove
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <div>Features</div>
+            <label>
+              <Field type="checkbox" name="AC" checked={values.AC} onChange={handleChange} />
+              AC
+            </label>
+            <label>
+              <Field type="checkbox" name="TV" checked={values.TV} onChange={handleChange} />
+              TV
+            </label>
+            <label>
+              <Field
+                type="checkbox"
+                name="kitchen"
+                checked={values.kitchen}
+                onChange={handleChange}
+              />
+              Kitchen
+            </label>
+            <label>
+              <Field
+                type="checkbox"
+                name="bathroom"
+                checked={values.bathroom}
+                onChange={handleChange}
+              />
+              Bathroom
+            </label>
+            <label>
+              <Field
+                type="checkbox"
+                name="autoTransmission"
+                checked={values.autoTransmission}
+                onChange={handleChange}
+              />
+              Auto Transmission
+            </label>
+          </div>
+
+          <button type="submit">Submit</button>
         </Form>
       )}
     </Formik>

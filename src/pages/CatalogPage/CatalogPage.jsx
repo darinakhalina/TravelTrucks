@@ -8,7 +8,7 @@ import {
   selectTotal,
   selectIsLoading,
 } from '../../redux/campersSlice';
-import { setFilter, selectNameFilter, clearFilters } from '../../redux/filtersSlice';
+import { setFilters, selectFilters, clearFilters } from '../../redux/filtersSlice';
 import FiltersForm from '../../components/FiltersForm/FiltersForm';
 
 const CatalogPage = () => {
@@ -16,7 +16,7 @@ const CatalogPage = () => {
   const campers = useSelector(selectCampers);
   const total = useSelector(selectTotal);
   const isLoading = useSelector(selectIsLoading);
-  const filtersFromStore = useSelector(selectNameFilter);
+  const filtersFromStore = useSelector(selectFilters);
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1); // fix - create slice for ui
 
@@ -35,8 +35,8 @@ const CatalogPage = () => {
   // ? move to component
   const onSubmit = async filters => {
     dispatch(clearItemsState());
-    dispatch(setFilter(filters.name));
-    await dispatch(fetchCampers({ page: 1, limit: 5, params: filtersFromStore }));
+    dispatch(setFilters(filters));
+    await dispatch(fetchCampers({ page: 1, limit: 5, params: filters }));
   };
 
   const onMore = async () => {
