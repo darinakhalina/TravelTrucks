@@ -12,7 +12,7 @@ const campersSlice = createSlice({
   name: 'campers',
   initialState,
   reducers: {
-    clearState: state => {
+    clearItemsState: state => {
       state.items = [];
       state.total = 0;
       state.error = null;
@@ -52,6 +52,6 @@ export const selectTotal = state => state.campers.total;
 export const selectCampers = state => state.campers.items;
 export const selectIsLoading = state => state.campers.isLoading;
 
-export const { clearState } = campersSlice.actions;
+export const { clearItemsState } = campersSlice.actions;
 
 export const campersReducer = campersSlice.reducer;

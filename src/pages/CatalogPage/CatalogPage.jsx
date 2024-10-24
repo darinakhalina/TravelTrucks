@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCampers } from '../../redux/campersOps';
-import { selectCampers, clearState, selectTotal, selectIsLoading } from '../../redux/campersSlice';
+import {
+  selectCampers,
+  clearItemsState,
+  selectTotal,
+  selectIsLoading,
+} from '../../redux/campersSlice';
 import { setFilter, selectNameFilter } from '../../redux/filtersSlice';
 import FiltersForm from '../../components/FiltersForm/FiltersForm';
 
@@ -16,9 +21,8 @@ const CatalogPage = () => {
   useEffect(() => {
     console.log('hello');
     const fetchCampersLocal = async () => {
-      dispatch(clearState());
       try {
-        await dispatch(fetchCampers({ p: 1, l: 5, name: filtersFromStore }));
+        await dispatch(fetchCampers({ p: 1, l: 5 }));
       } catch (e) {
         console.log(e);
       }
@@ -27,15 +31,16 @@ const CatalogPage = () => {
 
     return () => {
       console.log('bye');
-      dispatch(clearState());
+      // test - if nedded here
+      dispatch(clearItemsState());
     };
-  }, [dispatch, filtersFromStore]);
+  }, [dispatch]);
 
   // ? move to component
   const onSubmit = async filters => {
     dispatch(setFilter(filters.name));
 
-    dispatch(clearState());
+    dispatch(clearItemsState());
     try {
       await dispatch(fetchCampers({ p: 1, l: 5, name: filters.name }));
     } catch (error) {
