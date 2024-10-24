@@ -20,10 +20,10 @@ function FiltersForm({ onSubmit }) {
     <Formik
       initialValues={initialValues}
       validateOnChange={false}
-      onSubmit={(values, { resetForm }) => {
+      onSubmit={values => {
         // pass filters
         onSubmit(values);
-        resetForm();
+        // resetForm();
       }}
       validationSchema={validationSchema}
     >

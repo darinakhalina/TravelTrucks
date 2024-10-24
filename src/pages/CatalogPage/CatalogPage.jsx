@@ -10,13 +10,15 @@ const CatalogPage = () => {
   const campers = useSelector(selectCampers);
   const total = useSelector(selectTotal);
   const isLoading = useSelector(selectIsLoading);
+  const filtersFromStore = useSelector(selectNameFilter);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    console.log('hello');
     const fetchCampersLocal = async () => {
       dispatch(clearState());
       try {
-        await dispatch(fetchCampers({ p: 1, l: 5 }));
+        await dispatch(fetchCampers({ p: 1, l: 5, name: filtersFromStore }));
       } catch (e) {
         console.log(e);
       }
@@ -24,9 +26,10 @@ const CatalogPage = () => {
     fetchCampersLocal();
 
     return () => {
+      console.log('bye');
       dispatch(clearState());
     };
-  }, [dispatch]);
+  }, [dispatch, filtersFromStore]);
 
   // ? move to component
   const onSubmit = async filters => {
@@ -39,8 +42,6 @@ const CatalogPage = () => {
       console.error('Error:', error);
     }
   };
-
-  const filtersFromStore = useSelector(selectNameFilter);
 
   const onMore = async () => {
     setCurrentPage(currentPage + 1);
