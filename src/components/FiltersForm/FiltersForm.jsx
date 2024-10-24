@@ -24,8 +24,8 @@ function FiltersForm({ onSubmit }) {
             <label>Form</label>
             <div>
               <label>
-                <Field type="radio" name="form" value="van" />
-                van
+                <Field type="radio" name="form" value="panelTruck" />
+                panelTruck
               </label>
               <label>
                 <Field type="radio" name="form" value="fullyIntegrated" />
