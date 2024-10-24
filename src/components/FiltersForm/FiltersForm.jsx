@@ -20,19 +20,24 @@ function FiltersForm({ onSubmit }) {
     <Formik
       initialValues={initialValues}
       validateOnChange={false}
-      onSubmit={values => {
+      onSubmit={async (values, { setSubmitting }) => {
         // pass filters
-        onSubmit(values);
+        await onSubmit(values);
+        setSubmitting(false);
         // resetForm();
       }}
       validationSchema={validationSchema}
     >
-      <Form>
-        <label htmlFor={nameId}>Name</label>
-        <Field type="text" name="name" id={nameId} />
-        <ErrorMessage name="name" component="div" />
-        <button type="submit">Add name</button>
-      </Form>
+      {({ isSubmitting }) => (
+        <Form>
+          <label htmlFor={nameId}>Name</label>
+          <Field type="text" name="name" id={nameId} />
+          <ErrorMessage name="name" component="div" />
+          <button type="submit" disabled={isSubmitting}>
+            Add name
+          </button>
+        </Form>
+      )}
     </Formik>
   );
 }
