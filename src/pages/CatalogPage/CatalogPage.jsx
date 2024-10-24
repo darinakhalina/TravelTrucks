@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { fetchCampers } from '../../redux/campersOps';
 import {
   selectCampers,
@@ -16,7 +17,8 @@ const CatalogPage = () => {
   const total = useSelector(selectTotal);
   const isLoading = useSelector(selectIsLoading);
   const filtersFromStore = useSelector(selectNameFilter);
-  const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1); // fix - create slice for ui
 
   useEffect(() => {
     console.log('hello');
@@ -57,6 +59,10 @@ const CatalogPage = () => {
     }
   };
 
+  const handleNavigation = id => {
+    navigate(`/catalog/${id}`);
+  };
+
   return (
     <div>
       <FiltersForm onSubmit={onSubmit} />
@@ -64,6 +70,7 @@ const CatalogPage = () => {
         {campers.map(item => (
           <div key={item.id}>
             {item.name} - {item.id}
+            <button onClick={() => handleNavigation(item.id)}>Show more</button>
           </div>
         ))}
       </div>

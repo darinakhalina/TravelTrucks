@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCampers } from './campersOps';
+import { fetchCampers, fetchCamper } from './campersOps';
 
 const initialState = {
+  selectedItem: null,
   items: [],
   isLoading: false,
   error: null,
@@ -17,12 +18,18 @@ const campersSlice = createSlice({
       state.total = 0;
       state.error = null;
     },
+    clearSelectedItem: state => {
+      state.selectedItem = null;
+    },
   },
   extraReducers: builder => {
     builder
       .addCase(fetchCampers.fulfilled, (state, { payload }) => {
         state.items = [...state.items, ...payload.items];
         state.total = payload.total;
+      })
+      .addCase(fetchCamper.fulfilled, (state, { payload }) => {
+        state.selectedItem = payload;
       })
       .addMatcher(
         action => action.type.endsWith('/fulfilled'),
@@ -51,7 +58,8 @@ const campersSlice = createSlice({
 export const selectTotal = state => state.campers.total;
 export const selectCampers = state => state.campers.items;
 export const selectIsLoading = state => state.campers.isLoading;
+export const selectSelectedCamper = state => state.campers.selectedItem;
 
-export const { clearItemsState } = campersSlice.actions;
+export const { clearItemsState, clearSelectedItem } = campersSlice.actions;
 
 export const campersReducer = campersSlice.reducer;
