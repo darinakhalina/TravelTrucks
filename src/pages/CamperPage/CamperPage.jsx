@@ -10,18 +10,12 @@ const CamperPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    console.log('hello');
     const fetchCamperLocal = async () => {
-      try {
-        await dispatch(fetchCamper(id));
-      } catch (e) {
-        console.log(e);
-      }
+      await dispatch(fetchCamper(id));
     };
     fetchCamperLocal();
 
     return () => {
-      console.log('bye');
       dispatch(clearSelectedItem());
     };
   }, [dispatch, id]);

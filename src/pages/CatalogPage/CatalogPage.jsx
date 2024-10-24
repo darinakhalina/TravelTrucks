@@ -8,7 +8,7 @@ import {
   selectTotal,
   selectIsLoading,
 } from '../../redux/campersSlice';
-import { setFilter, selectNameFilter } from '../../redux/filtersSlice';
+import { setFilter, selectNameFilter, clearFilters } from '../../redux/filtersSlice';
 import FiltersForm from '../../components/FiltersForm/FiltersForm';
 
 const CatalogPage = () => {
@@ -21,42 +21,27 @@ const CatalogPage = () => {
   const [currentPage, setCurrentPage] = useState(1); // fix - create slice for ui
 
   useEffect(() => {
-    console.log('hello');
     const fetchCampersLocal = async () => {
-      try {
-        await dispatch(fetchCampers({ p: 1, l: 5 }));
-      } catch (e) {
-        console.log(e);
-      }
+      await dispatch(fetchCampers({ p: 1, l: 5 }));
     };
     fetchCampersLocal();
 
     return () => {
-      console.log('bye');
-      // test - if nedded here
       dispatch(clearItemsState());
+      dispatch(clearFilters());
     };
   }, [dispatch]);
 
   // ? move to component
   const onSubmit = async filters => {
-    dispatch(setFilter(filters.name));
-
     dispatch(clearItemsState());
-    try {
-      await dispatch(fetchCampers({ p: 1, l: 5, name: filters.name }));
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    dispatch(setFilter(filters.name));
+    await dispatch(fetchCampers({ p: 1, l: 5, name: filters.name }));
   };
 
   const onMore = async () => {
     setCurrentPage(currentPage + 1);
-    try {
-      await dispatch(fetchCampers({ p: currentPage + 1, l: 5, name: filtersFromStore }));
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    await dispatch(fetchCampers({ p: currentPage + 1, l: 5, name: filtersFromStore }));
   };
 
   const handleNavigation = id => {

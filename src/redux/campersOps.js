@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getCampersApi, getCamperApi } from '../api/campers-api';
 
 export const fetchCampers = createAsyncThunk('campers/fetchAll', async (params = {}, thunkAPI) => {
+  // add function to for filters return {} ar valid filters for fetch
   try {
     const data = await getCampersApi({ ...params });
     return data;
