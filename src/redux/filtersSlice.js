@@ -1,8 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// toDo: add filters - name only for test
 const initialState = {
-  name: '',
+  location: '',
+  form: '',
+  AC: false,
+  TV: false,
+  kitchen: false,
+  bathroom: false,
+  autoTransmission: false,
 };
 
 const filtersSlice = createSlice({
@@ -10,13 +15,13 @@ const filtersSlice = createSlice({
   initialState,
   reducers: {
     setFilter: (state, { payload }) => {
-      state.name = payload;
+      state = payload;
     },
     clearFilters: () => initialState,
   },
 });
 
-export const selectNameFilter = state => state.filters.name;
+export const selectNameFilter = state => state.filters;
 
 export const { setFilter, clearFilters } = filtersSlice.actions;
 

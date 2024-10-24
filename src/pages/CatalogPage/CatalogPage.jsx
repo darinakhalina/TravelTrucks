@@ -22,7 +22,7 @@ const CatalogPage = () => {
 
   useEffect(() => {
     const fetchCampersLocal = async () => {
-      await dispatch(fetchCampers({ p: 1, l: 5 }));
+      await dispatch(fetchCampers({ page: 1, limit: 5 }));
     };
     fetchCampersLocal();
 
@@ -36,12 +36,12 @@ const CatalogPage = () => {
   const onSubmit = async filters => {
     dispatch(clearItemsState());
     dispatch(setFilter(filters.name));
-    await dispatch(fetchCampers({ p: 1, l: 5, name: filters.name }));
+    await dispatch(fetchCampers({ page: 1, limit: 5, params: filtersFromStore }));
   };
 
   const onMore = async () => {
     setCurrentPage(currentPage + 1);
-    await dispatch(fetchCampers({ p: currentPage + 1, l: 5, name: filtersFromStore }));
+    await dispatch(fetchCampers({ page: currentPage + 1, limit: 5, params: filtersFromStore }));
   };
 
   const handleNavigation = id => {
