@@ -50,6 +50,7 @@ const campersSlice = createSlice({
 
 export const selectTotal = state => state.campers.total;
 export const selectCampers = state => state.campers.items;
+export const selectIsLoading = state => state.campers.isLoading;
 
 export const { clearState } = campersSlice.actions;
 

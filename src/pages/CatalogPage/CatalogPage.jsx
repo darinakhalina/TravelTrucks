@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCampers } from '../../redux/campersOps';
-import { selectCampers, clearState, selectTotal } from '../../redux/campersSlice';
+import { selectCampers, clearState, selectTotal, selectIsLoading } from '../../redux/campersSlice';
 import { setFilter, selectNameFilter } from '../../redux/filtersSlice';
 import FiltersForm from '../../components/FiltersForm/FiltersForm';
 
@@ -9,13 +9,14 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
   const total = useSelector(selectTotal);
+  const isLoading = useSelector(selectIsLoading);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchCampersLocal = async () => {
       dispatch(clearState());
       try {
-        dispatch(await fetchCampers({ p: 1, l: 5 }));
+        await dispatch(fetchCampers({ p: 1, l: 5 }));
       } catch (e) {
         console.log(e);
       }
@@ -28,12 +29,12 @@ const CatalogPage = () => {
   }, [dispatch]);
 
   // ? move to component
-  const onSubmit = filters => {
+  const onSubmit = async filters => {
     dispatch(setFilter(filters.name));
 
     dispatch(clearState());
     try {
-      dispatch(fetchCampers({ p: 1, l: 5, name: filters.name }));
+      await dispatch(fetchCampers({ p: 1, l: 5, name: filters.name }));
     } catch (error) {
       console.error('Error:', error);
     }
@@ -41,10 +42,10 @@ const CatalogPage = () => {
 
   const filtersFromStore = useSelector(selectNameFilter);
 
-  const onMore = () => {
+  const onMore = async () => {
     setCurrentPage(currentPage + 1);
     try {
-      dispatch(fetchCampers({ p: currentPage + 1, l: 5, name: filtersFromStore }));
+      await dispatch(fetchCampers({ p: currentPage + 1, l: 5, name: filtersFromStore }));
     } catch (error) {
       console.error('Error:', error);
     }
@@ -60,7 +61,7 @@ const CatalogPage = () => {
           </div>
         ))}
       </div>
-      {campers.length < total && <button onClick={onMore}>More</button>}
+      {campers.length < total && !isLoading && <button onClick={onMore}>More</button>}
     </div>
   );
 };
