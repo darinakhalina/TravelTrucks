@@ -14,7 +14,7 @@ const CustomInput = ({ value, name, onChange, label, iconName, placeholder = '',
       <div className="inputContainer">
         {iconName && (
           <span className="inputIcon">
-            <MapIcon width="16px" heigth="16px" />
+            <MapIcon className="icon-test" width="16px" heigth="16px" />
           </span>
         )}
         <input

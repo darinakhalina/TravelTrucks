@@ -70,7 +70,7 @@ body {
   }
 }
 
-/* CustomInput.css */
+/* CustomInput test */
 
 .formGroup {
   margin-bottom: 16px;
@@ -85,33 +85,30 @@ body {
   position: relative;
 }
 
-/* Иконка по умолчанию */
 .inputIcon {
   color: inherit;
   position: absolute;
-  left: 10px; /* Отступ от левого края */
-  top: 50%; /* Центрирование по вертикали */
-  transform: translateY(-50%); /* Центрирование иконки */
-  transition: color 0.3s; /* Плавный переход для изменения цвета */
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.3s;
 }
 
-/* Изменение цвета иконки, когда введен текст */
 .formField:focus + .inputIcon,
 .formField:not(:placeholder-shown) + .inputIcon {
-  color: green; /* Измените цвет на нужный при вводе текста */
+  color: green;
 }
 
-/* Стили для поля ввода */
 .formField {
-  padding-left: 30px; /* Отступ для текста, чтобы он не перекрывался с иконкой */
+  padding-left: 30px;
   width: 100%;
   height: 40px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  transition: border-color 0.3s; /* Плавный переход для изменения цвета границы */
+  transition: border-color 0.3s;
 }
 
 .formField:focus + .inputIcon,
 .formField:not(:placeholder-shown) + .inputIcon {
-  color: green; /* Измените цвет на нужный при вводе текста */
+  color: green;
 }
