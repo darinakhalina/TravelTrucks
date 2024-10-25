@@ -39,7 +39,7 @@
 
   .button-text {
     opacity: 1;
-    transition: opacity var(--transition-duration) var(--transition-timing-function);
+    transition: opacity var(--transition-duration-fast) var(--transition-timing-function);
   }
 
   &::before {
@@ -59,7 +59,7 @@
     box-shadow: -1.35em 2.25em 0 0 currentColor, 1.35em 2.25em 0 0 currentColor;
     animation: spin 2s cubic-bezier(0.45, 0.1, 0.15, 1) infinite;
     opacity: 0;
-    transition: opacity var(--transition-duration) var(--transition-timing-function);
+    transition: opacity var(--transition-duration-fast) var(--transition-timing-function);
   }
 
   &[disabled],
