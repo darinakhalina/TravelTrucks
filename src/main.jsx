@@ -5,7 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 import 'modern-normalize';
 import { store, persistor } from './redux/store';
-import './index.css';
+import './styles/index.css';
 import App from './components/App/App';
 
 createRoot(document.getElementById('root')).render(

@@ -1,0 +1,17 @@
+:root {
+  --primary-dark: #101828;
+  --gray-blue: #475467;
+  --gray: #6c717b;
+  --primary-red: #e44848;
+  --secondary-red: #d84343;
+  --primary-yellow: #ffc531;
+  --light-gray: #dadde1;
+  --lighter-gray: #f2f4f7;
+  --lightest-gray: #f7f7f7;
+  --white: #ffffff;
+  --line-height-base: 1.5;
+  --font-size-base: 16px;
+  --transition-duration: 250ms;
+  --transition-timing-function: ease-in-out;
+  --opacity: 0.2;
+}

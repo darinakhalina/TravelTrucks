@@ -1,0 +1,98 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  color: var(--white);
+  background: var(--primary-red);
+  border: 1px solid var(--primary-red);
+  border-radius: 200px;
+  padding: 16px;
+  transition: background-color var(--transition-duration) var(--transition-timing-function),
+    border-color var(--transition-duration) var(--transition-timing-function);
+  touch-action: manipulation;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: var(--secondary-red);
+    border-color: var(--secondary-red);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &.button--secondary {
+    color: var(--primary-dark);
+    background: var(--white-color);
+    border: 1px solid var(--light-gray);
+    transition: border-color var(--transition-duration) var(--transition-timing-function);
+    padding: 16px;
+
+    &:hover,
+    &:focus {
+      border-color: var(--secondary-red);
+    }
+  }
+
+  .button-text {
+    opacity: 1;
+    transition: opacity var(--transition-duration) var(--transition-timing-function);
+
+    &.is-hidden {
+      opacity: 0;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    font-size: 6px;
+    color: currentColor;
+    background-color: currentColor;
+    border-radius: 50%;
+    transform-origin: 50% 2em;
+    top: calc(50% - 2em);
+    left: 0;
+    right: 0;
+    margin: auto;
+    box-shadow: -1.35em 2.25em 0 0 currentColor, 1.35em 2.25em 0 0 currentColor;
+    animation: spin 2s cubic-bezier(0.45, 0.1, 0.15, 1) infinite;
+    opacity: 0;
+    transition: opacity var(--transition-duration) var(--transition-timing-function);
+  }
+
+  &[disabled],
+  &:disabled,
+  &.is-disabled {
+    pointer-events: none;
+    user-select: none;
+    opacity: var(--opacity);
+  }
+
+  &.is-loading {
+    opacity: 1;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &.is-fullwidth {
+    width: 100%;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); /* Начальное положение */
+  }
+  100% {
+    transform: rotate(360deg); /* Конечное положение */
+  }
+}
