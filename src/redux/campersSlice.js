@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCampers, fetchCamper } from './campersOps';
+import { fetchCampers, fetchCamper, fetchMoreCampers } from './campersOps';
 
 const initialState = {
   selectedItem: null,
@@ -32,6 +32,10 @@ const campersSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchCampers.fulfilled, (state, { payload }) => {
+        state.items = payload.items;
+        state.total = payload.total;
+      })
+      .addCase(fetchMoreCampers.fulfilled, (state, { payload }) => {
         state.items = [...state.items, ...payload.items];
         state.total = payload.total;
       })

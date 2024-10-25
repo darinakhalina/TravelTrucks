@@ -15,6 +15,20 @@ export const fetchCampers = createAsyncThunk(
   }
 );
 
+export const fetchMoreCampers = createAsyncThunk(
+  'campers/fetchMore',
+  async ({ page = 1, limit = 5, params = {} }, thunkAPI) => {
+    const queryParams = buildQueryParams(page, limit, params);
+
+    try {
+      const data = await getCampersApi(queryParams);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const fetchCamper = createAsyncThunk('campers/fetchOne', async (id, thunkAPI) => {
   try {
     const data = await getCamperApi(id);

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchCampers } from '../../redux/campersOps';
+import { fetchCampers, fetchMoreCampers } from '../../redux/campersOps';
 import {
   selectCampers,
   clearItemsState,
@@ -50,7 +50,7 @@ const CatalogPage = () => {
   const onMore = async () => {
     const nextPage = cuttentPage + 1;
     dispatch(setCurrentPage(nextPage));
-    await dispatch(fetchCampers({ page: nextPage, limit: 5, params: filtersFromStore }));
+    await dispatch(fetchMoreCampers({ page: nextPage, limit: 5, params: filtersFromStore }));
   };
 
   const handleNavigation = id => {
