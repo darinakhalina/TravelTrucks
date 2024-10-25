@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +15,7 @@ import {
 import { setFilters, clearFilters } from '../../redux/filtersSlice';
 import { addFavorite, removeFavorite } from '../../redux/favoritesSlice';
 import FiltersForm from '../../components/FiltersForm/FiltersForm';
+import css from './CatalogPage.module.css';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -68,9 +70,11 @@ const CatalogPage = () => {
   };
 
   return (
-    <div>
-      <FiltersForm onSubmit={onSubmit} />
-      <div>
+    <div className={clsx('container', css['catalog-page-container'])}>
+      <div className={css['catalog-page-filters-holder']}>
+        <FiltersForm onSubmit={onSubmit} />
+      </div>
+      <div className={css['catalog-page-campers-list-holder']}>
         {campers.map(item => (
           <div key={item.id}>
             <button onClick={() => handleFavoriteClick(item.id)}>
@@ -80,8 +84,8 @@ const CatalogPage = () => {
             <button onClick={() => handleNavigation(item.id)}>Show more</button>
           </div>
         ))}
+        {campers.length < total && !isLoading && <button onClick={onMore}>More</button>}
       </div>
-      {campers.length < total && !isLoading && <button onClick={onMore}>More</button>}
     </div>
   );
 };
