@@ -1,49 +1,27 @@
+import clsx from 'clsx';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
+import css from './HomePage.module.css';
 
 const HomePage = () => {
-  const handleClick = () => {
-    console.log('Button clicked!');
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/catalog');
   };
 
   return (
-    <div>
-      <div>
-        <h1>Button Examples</h1>
-
-        <h2>Primary Button</h2>
-        <Button text="Primary Button" onClick={handleClick} />
-
-        <h2>Secondary Button</h2>
-        <Button text="Secondary Button" onClick={handleClick} skin="secondary" />
-
-        <h2>Disabled Button</h2>
-        <Button text="Disabled Button" isDisabled onClick={handleClick} />
-        <Button text="Secondary Button" isDisabled onClick={handleClick} skin="secondary" />
-
-        <h2>Loading Button</h2>
-        <Button text="Loading Button" isLoading onClick={handleClick} />
-        <Button text="Secondary Button" isLoading onClick={handleClick} skin="secondary" />
-
-        <h2>Full Width Button</h2>
-        <Button text="Full Width Button" isFullWidth onClick={handleClick} />
-
-        <h2>Combined States</h2>
-        <Button text="Disabled Loading Button" isDisabled isLoading onClick={handleClick} />
-        <Button
-          text="Secondary Button"
-          isDisabled
-          isLoading
-          onClick={handleClick}
-          skin="secondary"
-        />
-        <Button
-          text="Secondary Full Width Button"
-          skin="secondary"
-          isFullWidth
-          onClick={handleClick}
-        />
+    <section className={css['hero']}>
+      <div className="container">
+        <div className={css['hero-content']}>
+          <h1 className={clsx('text-xl', css['hero-content-title'])}>Campers of your dreams</h1>
+          <h2 className={clsx('text-lg', css['hero-content-subtitle'])}>
+            You can find everything you want in our catalog
+          </h2>
+          <Button onClick={handleButtonClick}>View Now</Button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

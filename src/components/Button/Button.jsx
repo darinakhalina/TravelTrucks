@@ -3,7 +3,7 @@ import css from './Button.module.css';
 
 const Button = ({
   className,
-  text,
+  children,
   isDisabled,
   isLoading,
   isFullWidth,
@@ -19,9 +19,7 @@ const Button = ({
 
   return (
     <button className={buttonClasses} disabled={isDisabled || isLoading} onClick={onClick}>
-      <span className={clsx(css['button-text'], { [css['is-hidden']]: isLoading })}>
-        {text} {/* Текст кнопки */}
-      </span>
+      <span className={css['button-text']}>{children}</span>
     </button>
   );
 };

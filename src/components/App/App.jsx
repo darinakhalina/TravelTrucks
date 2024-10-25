@@ -1,7 +1,8 @@
 import { lazy, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import css from './App.module.css';
+import logo from '../../assets/logo.svg';
 import Navigation from '../Navigation/Navigation';
 import Loader from '../Loader/Loader';
 
@@ -14,9 +15,14 @@ function App() {
   return (
     <div className="campers-scope">
       <header className={css['header']}>
-        <Navigation />
+        <div className="container flex-container">
+          <Link className={css['logo']} to="/">
+            <img src={logo} width={136} height={16} alt="Travel Trucks" />
+          </Link>
+          <Navigation />
+        </div>
       </header>
-      <main className={css['main-container']}>
+      <main>
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />

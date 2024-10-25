@@ -1,0 +1,27 @@
+.hero {
+  position: relative;
+  height: calc(100vh - 72px);
+  background-image: url(../../assets/hero.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+
+  .hero-content-title {
+    margin-bottom: 8px;
+  }
+
+  .hero-content-subtitle {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-device-pixel-ratio: 2),
+  screen and (min-resolution: 192dpi),
+  screen and (min-resolution: 2dppx) {
+  .hero {
+    background-image: url(../../assets/hero@2x.jpg);
+  }
+}

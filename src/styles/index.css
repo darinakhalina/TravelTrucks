@@ -38,4 +38,33 @@ body {
   color: var(--primary-dark);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
+
+  .container {
+    margin: 0 auto;
+    padding: 0 16px;
+    width: 100%;
+    min-width: 320px;
+    max-width: 1440px;
+  }
+
+  .flex-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .text-xl {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  .text-lg {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .text-md {
+    font-size: 20px;
+    line-height: 24px;
+  }
 }
