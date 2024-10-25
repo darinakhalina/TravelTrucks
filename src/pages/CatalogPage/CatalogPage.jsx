@@ -2,17 +2,17 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchCampers, fetchMoreCampers } from '../../redux/campersOps';
+import { clearItemsState, resetCurrentPage, setCurrentPage } from '../../redux/campersSlice';
 import {
   selectCampers,
-  clearItemsState,
   selectTotal,
-  selectIsLoading,
-  resetCurrentPage,
-  setCurrentPage,
   selectCurrentPage,
-} from '../../redux/campersSlice';
-import { setFilters, selectFilters, clearFilters } from '../../redux/filtersSlice';
-import { addFavorite, removeFavorite, selectFavorites } from '../../redux/favoritesSlice';
+  selectIsLoading,
+  selectFilters,
+  selectFavorites,
+} from '../../redux/selectors';
+import { setFilters, clearFilters } from '../../redux/filtersSlice';
+import { addFavorite, removeFavorite } from '../../redux/favoritesSlice';
 import FiltersForm from '../../components/FiltersForm/FiltersForm';
 
 const CatalogPage = () => {

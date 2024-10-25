@@ -66,12 +66,6 @@ const campersSlice = createSlice({
   },
 });
 
-export const selectTotal = state => state.campers.total;
-export const selectCurrentPage = state => state.campers.currentPage;
-export const selectCampers = state => state.campers.items;
-export const selectIsLoading = state => state.campers.isLoading;
-export const selectSelectedCamper = state => state.campers.selectedItem;
-
 export const { clearItemsState, clearSelectedItem, resetCurrentPage, setCurrentPage } =
   campersSlice.actions;
 

@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchCamper } from '../../redux/campersOps';
-import { selectSelectedCamper, clearSelectedItem } from '../../redux/campersSlice';
+import { clearSelectedItem } from '../../redux/campersSlice';
+import { selectSelectedCamper } from '../../redux/selectors';
 
 const CamperPage = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import { useSelector } from 'react-redux';
-import { selectFilters } from '../../redux/filtersSlice';
+import { selectFilters } from '../../redux/selectors';
 
 function FiltersForm({ onSubmit }) {
   // const dispatch = useDispatch();
