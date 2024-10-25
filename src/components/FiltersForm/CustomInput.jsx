@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import MapIcon from '../../assets/map.svg?react';
+import Icon from '../Icon/Icon';
 
 const CustomInput = ({ value, name, onChange, label, iconName, placeholder = '', ...props }) => {
   const id = useId();
@@ -14,7 +14,7 @@ const CustomInput = ({ value, name, onChange, label, iconName, placeholder = '',
       <div className="inputContainer">
         {iconName && (
           <span className="inputIcon">
-            <MapIcon className="icon-test" width="16px" heigth="16px" />
+            <Icon name="map" size={16} />
           </span>
         )}
         <input
