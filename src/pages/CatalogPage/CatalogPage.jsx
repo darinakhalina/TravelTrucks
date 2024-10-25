@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { fetchCampers } from '../../redux/campersOps';
 import { clearItemsState, resetCurrentPage, setCurrentPage } from '../../redux/campersSlice';
 import { selectCampers, selectFavorites } from '../../redux/selectors';
-import { setFilters, clearFilters } from '../../redux/filtersSlice';
+import { clearFilters } from '../../redux/filtersSlice';
 import { addFavorite, removeFavorite } from '../../redux/favoritesSlice';
 import FiltersForm from '../../components/FiltersForm/FiltersForm';
 import CampersLoadMoreButton from '../../components/CampersLoadMoreButton/CampersLoadMoreButton';
@@ -31,14 +31,6 @@ const CatalogPage = () => {
     };
   }, [dispatch]);
 
-  // ? move to component
-  const onSubmit = async filters => {
-    dispatch(clearItemsState());
-    dispatch(setFilters(filters));
-    dispatch(setCurrentPage(1));
-    await dispatch(fetchCampers({ page: 1, limit: 5, params: filters }));
-  };
-
   const handleNavigation = id => {
     navigate(`/catalog/${id}`);
   };
@@ -56,7 +48,7 @@ const CatalogPage = () => {
   return (
     <div className={clsx('container', css['catalog-page-container'])}>
       <div className={css['catalog-page-filters-holder']}>
-        <FiltersForm onSubmit={onSubmit} />
+        <FiltersForm />
       </div>
       <div className={css['catalog-page-campers-list-holder']}>
         {campers.map(item => (

@@ -9,6 +9,7 @@ const Button = ({
   isFullWidth,
   onClick,
   skin = 'primary',
+  type = 'button',
 }) => {
   const buttonClasses = clsx(css['button'], className, {
     [css['is-disabled']]: isDisabled,
@@ -18,7 +19,12 @@ const Button = ({
   });
 
   return (
-    <button className={buttonClasses} disabled={isDisabled || isLoading} onClick={onClick}>
+    <button
+      className={buttonClasses}
+      type={type}
+      disabled={isDisabled || isLoading}
+      onClick={onClick}
+    >
       <span className={css['button-text']}>{children}</span>
     </button>
   );

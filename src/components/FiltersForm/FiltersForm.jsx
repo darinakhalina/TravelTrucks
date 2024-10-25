@@ -1,10 +1,23 @@
 import { Formik, Form, Field } from 'formik';
-import { useSelector } from 'react-redux';
-import { selectFilters } from '../../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCampers } from '../../redux/campersOps';
+import Button from '../Button/Button';
+import { clearItemsState, setCurrentPage } from '../../redux/campersSlice';
+import { setFilters } from '../../redux/filtersSlice';
+import { selectFilters, selectIsLoading } from '../../redux/selectors';
+import CustomInput from './CustomInput';
 
-function FiltersForm({ onSubmit }) {
-  // const dispatch = useDispatch();
+function FiltersForm() {
+  const dispatch = useDispatch();
   const initialState = useSelector(selectFilters);
+  const isLoading = useSelector(selectIsLoading);
+
+  const onSubmit = async filters => {
+    dispatch(clearItemsState());
+    dispatch(setFilters(filters));
+    dispatch(setCurrentPage(1));
+    await dispatch(fetchCampers({ page: 1, limit: 5, params: filters }));
+  };
 
   return (
     <Formik
@@ -15,10 +28,25 @@ function FiltersForm({ onSubmit }) {
     >
       {({ values, handleChange }) => (
         <Form>
-          <div>
+          {/* <div>
             <label htmlFor="location">Location</label>
             <Field type="text" name="location" />
-          </div>
+          </div> */}
+
+          <Field name="location">
+            {({ field }) => (
+              <CustomInput
+                type="text"
+                iconName="test"
+                value={field.value}
+                onChange={field.onChange}
+                placeholder="City"
+                name="location"
+                label="Location"
+                {...field}
+              />
+            )}
+          </Field>
 
           <div>
             <label>Form</label>
@@ -77,7 +105,9 @@ function FiltersForm({ onSubmit }) {
             </label>
           </div>
 
-          <button type="submit">Submit</button>
+          <Button isLoading={isLoading} type="submit">
+            Search
+          </Button>
         </Form>
       )}
     </Formik>
