@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectIsFavorite } from '../../redux/selectors';
@@ -57,6 +58,9 @@ const CamperCard = ({ camper }) => {
               </button>
             </div>
           </div>
+        </div>
+        <div>
+          <Link to={`/catalog/${camper.id}?tab=reviews`}>GO TO CAMPER INFO</Link>
         </div>
         {camper.name} - {camper.id}
         <button onClick={() => handleNavigation(camper.id)}>Show more</button>
