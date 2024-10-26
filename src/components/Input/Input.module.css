@@ -1,0 +1,53 @@
+.input-wrapper {
+  .input-holder {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .input-label {
+    display: inline-block;
+    color: var(--gray);
+    margin-bottom: 8px;
+  }
+
+  .input-icon {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+  }
+
+  .input {
+    height: 56px;
+    width: 100%;
+    background-color: var(--lightest-gray);
+    border-radius: 12px;
+    border-color: transparent;
+    color: var(--primary-dark);
+    padding: 18px;
+
+    &::placeholder {
+      color: var(--gray);
+      font-weight: 400;
+    }
+
+    &:hover {
+      border-color: transparent;
+    }
+
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+
+    &.has-icon {
+      padding-left: 46px;
+    }
+
+    &.input--lg {
+      height: 60px;
+    }
+  }
+}

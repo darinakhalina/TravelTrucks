@@ -68,47 +68,11 @@ body {
     font-size: 20px;
     line-height: 24px;
   }
-}
 
-/* CustomInput test */
-
-.formGroup {
-  margin-bottom: 16px;
-}
-
-.formLabel {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.inputContainer {
-  position: relative;
-}
-
-.inputIcon {
-  color: inherit;
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: color 0.3s;
-}
-
-.formField:focus + .inputIcon,
-.formField:not(:placeholder-shown) + .inputIcon {
-  color: green;
-}
-
-.formField {
-  padding-left: 30px;
-  width: 100%;
-  height: 40px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s;
-}
-
-.formField:focus + .inputIcon,
-.formField:not(:placeholder-shown) + .inputIcon {
-  color: green;
+  .hr {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--light-gray);
+    margin: 0;
+  }
 }

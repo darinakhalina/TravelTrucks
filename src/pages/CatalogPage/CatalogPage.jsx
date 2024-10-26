@@ -7,7 +7,7 @@ import { clearItemsState, resetCurrentPage, setCurrentPage } from '../../redux/c
 import { selectCampers, selectFavorites } from '../../redux/selectors';
 import { clearFilters } from '../../redux/filtersSlice';
 import { addFavorite, removeFavorite } from '../../redux/favoritesSlice';
-import FiltersForm from '../../components/FiltersForm/FiltersForm';
+import CatalogFiltersForm from '../../components/CatalogFiltersForm/CatalogFiltersForm';
 import CampersLoadMoreButton from '../../components/CampersLoadMoreButton/CampersLoadMoreButton';
 import css from './CatalogPage.module.css';
 
@@ -48,7 +48,7 @@ const CatalogPage = () => {
   return (
     <div className={clsx('container', css['catalog-page-container'])}>
       <div className={css['catalog-page-filters-holder']}>
-        <FiltersForm />
+        <CatalogFiltersForm />
       </div>
       <div className={css['catalog-page-campers-list-holder']}>
         {campers.map(item => (

@@ -1,0 +1,22 @@
+.filters-section {
+  margin-bottom: 40px;
+}
+
+.filters-subsection {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.filters-title {
+  margin-bottom: 24px;
+}
+
+.filters-subtitle {
+  color: var(--gray-blue);
+  margin-bottom: 24px;
+}
