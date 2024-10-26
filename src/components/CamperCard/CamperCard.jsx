@@ -1,11 +1,13 @@
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectIsFavorite } from '../../redux/selectors';
 import { addFavorite, removeFavorite } from '../../redux/favoritesSlice';
 import Icon from '../Icon/Icon';
 import { formatPrice } from '../../utils/formatPrice';
+import { formatLocation } from '../../utils/formatLocation';
+import ReviewsRating from '../ReviewsRating/ReviewsRating';
+import Button from '../Button/Button';
 import css from './CamperCard.module.css';
 
 const CamperCard = ({ camper }) => {
@@ -15,6 +17,10 @@ const CamperCard = ({ camper }) => {
 
   const handleNavigation = id => {
     navigate(`/catalog/${id}`);
+  };
+
+  const handleReviewsNavigation = id => {
+    navigate(`/catalog/${id}?tab=reviews`);
   };
 
   const handleFavoriteClick = id => {
@@ -59,11 +65,21 @@ const CamperCard = ({ camper }) => {
             </div>
           </div>
         </div>
-        <div>
-          <Link to={`/catalog/${camper.id}?tab=reviews`}>GO TO CAMPER INFO</Link>
+        <div className={css['camper-card-main-details-info']}>
+          <ReviewsRating
+            rating={camper.rating}
+            reviews={camper.reviews}
+            onClick={() => handleReviewsNavigation(camper.id)}
+          />
+          <div className={css['camper-card-main-details-location']}>
+            <Icon name="map" size={16} />
+            <span>{formatLocation(camper.location)}</span>
+          </div>
         </div>
-        {camper.name} - {camper.id}
-        <button onClick={() => handleNavigation(camper.id)}>Show more</button>
+        <p className={css['camper-card-info-description']}>{camper.description}</p>
+        <div className={css['camper-card-actions']}>
+          <Button onClick={() => handleNavigation(camper.id)}>Show more</Button>
+        </div>
       </div>
     </div>
   );

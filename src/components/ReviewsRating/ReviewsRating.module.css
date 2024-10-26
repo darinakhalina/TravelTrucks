@@ -1,0 +1,18 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+
+  .rating-icon {
+    color: var(--primary-yellow);
+    margin-right: 4px;
+  }
+
+  .rating-link {
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid var(--primary-dark);
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 400;
+  }
+}

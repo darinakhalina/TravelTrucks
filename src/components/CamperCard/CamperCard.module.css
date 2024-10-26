@@ -1,6 +1,5 @@
 .camper-card {
   display: flex;
-  flex-wrap: wrap;
   gap: 24px;
   width: 100%;
   padding: 24px;
@@ -19,6 +18,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    max-width: 100%;
   }
 
   .camper-card-main-info {
@@ -26,6 +26,7 @@
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
+    margin-bottom: 8px;
   }
 
   .camper-card-name {
@@ -60,8 +61,35 @@
   .camper-card-favorive.is-favorite {
     color: var(--primary-red);
   }
+
+  .camper-card-main-details-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .camper-card-main-details-location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .camper-card-info-description {
+    margin-bottom: 24px;
+  }
+
+  .camper-card-actions {
+    margin-top: 16px;
+  }
 }
 
 .camper-card:not(:last-child) {
   margin-bottom: 32px;
+}
+@media (max-width: 1024px) {
+  .camper-card {
+    flex-wrap: wrap;
+  }
 }
