@@ -9,6 +9,7 @@ import { formatLocation } from '../../utils/formatLocation';
 import ReviewsRating from '../ReviewsRating/ReviewsRating';
 import Button from '../Button/Button';
 import css from './CamperCard.module.css';
+import Features from '../Features/Features';
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
@@ -77,6 +78,9 @@ const CamperCard = ({ camper }) => {
           </div>
         </div>
         <p className={css['camper-card-info-description']}>{camper.description}</p>
+        <div>
+          <Features camper={camper} />
+        </div>
         <div className={css['camper-card-actions']}>
           <Button onClick={() => handleNavigation(camper.id)}>Show more</Button>
         </div>

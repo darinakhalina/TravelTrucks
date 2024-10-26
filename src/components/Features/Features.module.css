@@ -1,0 +1,21 @@
+.feature-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  .feature {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 16px 18px;
+    background-color: var(--lighter-gray);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  .feature-title::first-letter {
+    text-transform: uppercase;
+    margin-left: 4px;
+  }
+}
