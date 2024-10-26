@@ -113,7 +113,7 @@ function CatalogFiltersForm() {
                       checked={values.bathroom}
                       onChange={handleChange}
                       label="Bathroom"
-                      iconName="water"
+                      iconName="shower"
                     />
                   )}
                 </Field>
