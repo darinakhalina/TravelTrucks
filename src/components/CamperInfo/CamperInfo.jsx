@@ -1,18 +1,9 @@
 import clsx from 'clsx';
-// import { useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
-// import { selectIsFavorite } from '../../redux/selectors';
-// import { addFavorite, removeFavorite } from '../../redux/favoritesSlice';
-// import Icon from '../Icon/Icon';
-// import { formatPrice } from '../../utils/formatPrice';
-// import { formatLocation } from '../../utils/formatLocation';
-// import ReviewsRating from '../ReviewsRating/ReviewsRating';
-// import Button from '../Button/Button';
-import css from './CamperInfo.module.css';
 import { formatLocation } from '../../utils/formatLocation';
 import { formatPrice } from '../../utils/formatPrice';
 import ReviewsRating from '../ReviewsRating/ReviewsRating';
 import Icon from '../Icon/Icon';
+import css from './CamperInfo.module.css';
 
 const CamperInfo = ({ camper, onClick }) => {
   return (
@@ -30,28 +21,26 @@ const CamperInfo = ({ camper, onClick }) => {
       <div className={clsx(css['camper-info-details-price'], 'text-lg')}>
         {formatPrice(camper.price)}
       </div>
+      <div className={css['camper-info-gallery-holder']}>
+        <ul className={css['camper-info-gallery']}>
+          {camper.gallery.map(({ thumb }, index) => {
+            return (
+              <li key={thumb}>
+                <img
+                  width={292}
+                  height={312}
+                  className={css['camper-info-gallery-image']}
+                  src={thumb}
+                  alt={`${camper.name} - image ${index}`}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <p className={css['camper-info-description']}>{camper.description}</p>
     </div>
   );
 };
 
 export default CamperInfo;
-
-/* const dispatch = useDispatch();
-  const isFavorite = useSelector(selectIsFavorite(camper.id));
-  const navigate = useNavigate();
-
-  const handleNavigation = id => {
-    navigate(`/catalog/${id}`);
-  };
-
-  const handleReviewsNavigation = id => {
-    navigate(`/catalog/${id}?tab=reviews`);
-  };
-
-  const handleFavoriteClick = id => {
-    if (isFavorite) {
-      dispatch(removeFavorite(id));
-    } else {
-      dispatch(addFavorite(id));
-    }
-  }; */

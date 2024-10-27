@@ -21,4 +21,27 @@
     font-weight: 600;
     margin-right: 24px;
   }
+
+  .camper-info-gallery-holder {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .camper-info-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .camper-info-gallery-image {
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 10px;
+    background-color: var(--light-gray);
+    box-shadow: var(--box-shadow);
+  }
+
+  .camper-info-description {
+    margin-bottom: 48px;
+  }
 }
