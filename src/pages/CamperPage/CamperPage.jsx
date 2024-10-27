@@ -9,6 +9,7 @@ import CamperInfo from '../../components/CamperInfo/CamperInfo';
 import Loader from '../../components/Loader/Loader';
 import css from './CamperPage.module.css';
 import BookForm from '../../components/BookForm/BookForm.jsx';
+import CamperInfoFeatures from '../../components/CamperInfoFeatures/CamperInfoFeatures.jsx';
 
 // toDo - move
 const tabsData = [
@@ -102,7 +103,7 @@ const CamperPage = () => {
         </nav>
         <div className={css['camper-page-content']}>
           <div className={css['camper-page-content-block']}>
-            {activeTab === 'features' ? <div>feat</div> : <div>rew</div>}
+            {activeTab === 'features' ? <CamperInfoFeatures camper={camper} /> : <div>rew</div>}
           </div>
           <div className={css['camper-page-content-block']}>
             <BookForm />

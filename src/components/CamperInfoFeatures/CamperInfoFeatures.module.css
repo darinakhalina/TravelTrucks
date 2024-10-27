@@ -1,0 +1,11 @@
+.camper-info-features {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 48px;
+  border: 1px solid var(--lightest-gray);
+  border-radius: 10px;
+  background-color: var(--lightest-gray);
+  height: 100%;
+  margin-bottom: 24px;
+}

@@ -1,0 +1,24 @@
+.camper-details {
+  .camper-details-title {
+    margin-bottom: 24px;
+  }
+
+  .camper-details-list {
+    margin-top: 24px;
+  }
+
+  .camper-details-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+  }
+
+  .camper-details-item-data::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.camper-details-item:not(:last-child) {
+  margin-bottom: 16px;
+}
