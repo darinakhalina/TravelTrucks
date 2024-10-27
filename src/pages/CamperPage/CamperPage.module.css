@@ -1,0 +1,61 @@
+.camper-page-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.camper-page-tabs {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid var(--light-gray);
+
+  .camper-page-tabs-item {
+    position: relative;
+    color: var(--primary-dark);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 0 0 24px;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      visibility: hidden;
+      display: block;
+      width: 100%;
+      border-bottom: 3px solid transparent;
+      position: absolute;
+      bottom: -2px;
+      transition: visibility var(--transition-duration) var(--transition-timing-function),
+        border-bottom-color var(--transition-duration) var(--transition-timing-function);
+    }
+
+    &:hover {
+      &::after {
+        visibility: visible;
+        border-bottom-color: var(--gray-light-color);
+      }
+    }
+
+    &.is-active {
+      &::after {
+        visibility: visible;
+        border-bottom-color: var(--primary-red);
+      }
+    }
+  }
+}
+
+.camper-page-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 40px 0;
+
+  .camper-page-content-block {
+    flex: 1 1 calc(50% - 20px);
+    min-width: 300px;
+    max-width: 100%;
+  }
+}

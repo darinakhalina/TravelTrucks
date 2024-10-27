@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
@@ -6,6 +7,12 @@ import { clearSelectedItem } from '../../redux/campersSlice';
 import { selectSelectedCamper, selectIsLoading } from '../../redux/selectors';
 import CamperInfo from '../../components/CamperInfo/CamperInfo';
 import Loader from '../../components/Loader/Loader';
+import css from './CamperPage.module.css';
+
+const tabsData = [
+  { id: 'features', label: 'Features' },
+  { id: 'reviews', label: 'Reviews' },
+];
 
 const CamperPage = () => {
   const dispatch = useDispatch();
@@ -70,104 +77,34 @@ const CamperPage = () => {
   }
 
   return (
-    <div>
+    <div className={clsx('container', css['camper-page-container'])}>
       <CamperInfo camper={camper} onClick={handleButtonClick} />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div ref={tabSectionRef}>active tab - {activeTab}</div>
+      <div ref={tabSectionRef}>
+        <nav>
+          <ul className={css['camper-page-tabs']}>
+            {tabsData.map(tab => (
+              <li key={tab.id}>
+                <div
+                  tabIndex={0}
+                  className={clsx(
+                    css['camper-page-tabs-item'],
+                    activeTab === tab.id && css['is-active']
+                  )}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  {tab.label}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className={css['camper-page-content']}>
+          <div className={css['camper-page-content-block']}>
+            {activeTab === 'features' ? <div>feat</div> : <div>rew</div>}
+          </div>
+          <div className={css['camper-page-content-block']}>FORM</div>
+        </div>
+      </div>
     </div>
   );
 };
