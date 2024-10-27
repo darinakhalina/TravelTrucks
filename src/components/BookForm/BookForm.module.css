@@ -1,0 +1,25 @@
+.book-form {
+  padding: 40px 48px;
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+
+  .book-form-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .book-form-subtitle {
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+
+  .book-form-field:not(:last-child) {
+    margin-bottom: 14px;
+  }
+
+  .book-form-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+  }
+}

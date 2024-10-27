@@ -8,7 +8,9 @@ import { selectSelectedCamper, selectIsLoading } from '../../redux/selectors';
 import CamperInfo from '../../components/CamperInfo/CamperInfo';
 import Loader from '../../components/Loader/Loader';
 import css from './CamperPage.module.css';
+import BookForm from '../../components/BookForm/BookForm.jsx';
 
+// toDo - move
 const tabsData = [
   { id: 'features', label: 'Features' },
   { id: 'reviews', label: 'Reviews' },
@@ -102,7 +104,9 @@ const CamperPage = () => {
           <div className={css['camper-page-content-block']}>
             {activeTab === 'features' ? <div>feat</div> : <div>rew</div>}
           </div>
-          <div className={css['camper-page-content-block']}>FORM</div>
+          <div className={css['camper-page-content-block']}>
+            <BookForm />
+          </div>
         </div>
       </div>
     </div>
