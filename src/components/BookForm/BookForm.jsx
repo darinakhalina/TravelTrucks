@@ -57,7 +57,9 @@ const BookForm = () => {
                 />
               )}
             </Field>
-            {errors.name && touched.name && <div>{errors.name}</div>}
+            {errors.name && touched.name && (
+              <div className={css['book-form-field-error']}>{errors.name}</div>
+            )}
           </div>
           <div className={css['book-form-field']}>
             <Field name="email">
@@ -73,7 +75,9 @@ const BookForm = () => {
                 />
               )}
             </Field>
-            {errors.email && touched.email && <div>{errors.email}</div>}
+            {errors.email && touched.email && (
+              <div className={css['book-form-field-error']}>{errors.email}</div>
+            )}
           </div>
           <div className={css['book-form-field']}>
             <Field name="date">
@@ -91,21 +95,21 @@ const BookForm = () => {
                 />
               )}
             </Field>
-            {errors.date && touched.date && <div>{errors.date}</div>}
+            {errors.date && touched.date && (
+              <div className={css['book-form-field-error']}>{errors.date}</div>
+            )}
           </div>
           <div className={css['book-form-field']}>
             <Field name="comment">
               {({ field }) => (
-                <>
-                  <Textarea
-                    type="text"
-                    name="comment"
-                    value={field.value}
-                    onChange={field.onChange}
-                    placeholder="Comment"
-                    {...field}
-                  />
-                </>
+                <Textarea
+                  type="text"
+                  name="comment"
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Comment"
+                  {...field}
+                />
               )}
             </Field>
           </div>
