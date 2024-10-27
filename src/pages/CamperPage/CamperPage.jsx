@@ -1,14 +1,18 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { fetchCamper } from '../../redux/campersOps';
 import { clearSelectedItem } from '../../redux/campersSlice';
-import { selectSelectedCamper } from '../../redux/selectors';
+import { selectSelectedCamper, selectIsLoading } from '../../redux/selectors';
+import CamperInfo from '../../components/CamperInfo/CamperInfo';
+import Loader from '../../components/Loader/Loader';
 
 const CamperPage = () => {
   const dispatch = useDispatch();
+  const camper = useSelector(selectSelectedCamper);
+  const isLoading = useSelector(selectIsLoading);
   const tabSectionRef = useRef(null);
-  const selectedCamper = useSelector(selectSelectedCamper);
+
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState('features');
 
@@ -30,12 +34,13 @@ const CamperPage = () => {
   }, [dispatch, id]);
 
   useEffect(() => {
+    if (isLoading) return;
     const params = new URLSearchParams(location.search);
     if (params.get('tab') === 'reviews') {
       setActiveTab('reviews');
       scrollToSection();
     }
-  }, [id]);
+  }, [id, isLoading]);
 
   const handleButtonClick = () => {
     if (activeTab !== 'reviews') {
@@ -44,14 +49,29 @@ const CamperPage = () => {
     scrollToSection();
   };
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!camper) {
+    return (
+      <div className="align-block">
+        <p className="text-md">
+          Unfortunately, there&apos;s no information available for this camper. Try refreshing the
+          page or choosing another one.
+        </p>
+        <p>
+          <Link className="text-md" to="/catalog">
+            Go to catalog page
+          </Link>
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <div>
-        <button onClick={handleButtonClick}> GO </button>
-      </div>
-      <div>Camper page</div>
-      <div>{selectedCamper?.id}</div>
-      <div>{selectedCamper?.name}</div>
+      <CamperInfo camper={camper} onClick={handleButtonClick} />
       <br />
       <br />
       <br />

@@ -1,0 +1,24 @@
+.camper-info {
+  .camper-info-name {
+    margin-bottom: 8px;
+  }
+
+  .camper-info-details-data {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .camper-info-details-location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .camper-info-details-price {
+    font-weight: 600;
+    margin-right: 24px;
+  }
+}

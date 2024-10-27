@@ -81,13 +81,14 @@
   }
 
   .camper-card-actions {
-    margin-top: 16px;
+    margin-top: 24px;
   }
 }
 
 .camper-card:not(:last-child) {
   margin-bottom: 32px;
 }
+
 @media (max-width: 1024px) {
   .camper-card {
     flex-wrap: wrap;

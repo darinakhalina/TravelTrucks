@@ -34,10 +34,29 @@ body {
   height: 100%;
 }
 
+.align-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
 .campers-scope {
   color: var(--primary-dark);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
+
+  a {
+    color: var(--primary-dark);
+  }
+
+  a:hover {
+    color: var(--primary-red);
+  }
 
   .container {
     margin: 0 auto;

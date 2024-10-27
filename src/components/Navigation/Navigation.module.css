@@ -1,8 +1,9 @@
 .navigation {
   display: flex;
   align-items: center;
+  width: calc(100% - 136px);
+  justify-content: center;
   height: 72px;
-  margin: 0 auto;
 
   .navigation-list {
     display: flex;
