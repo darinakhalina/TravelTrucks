@@ -42,6 +42,7 @@
   }
 
   .camper-info-description {
+    color: var(--gray-blue);
     margin-bottom: 48px;
   }
 }
