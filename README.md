@@ -7,7 +7,7 @@ rentals.
 
 The application includes three main pages:
 
-1. **Home Page**: The landing page that introduces the application and its services.
+1. **Home Page**: The landing page that introduces the application.
 2. **Catalog Page**: A page where users can view all listings and apply filters to find the perfect
    camper for their needs.
 3. **Camper Details Page**: This page provides detailed information about a selected camper,
