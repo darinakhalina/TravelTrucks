@@ -1,6 +1,6 @@
-# Travel Trax
+# TravelTrucks
 
-**Travel Trax** is a web application for the company **TravelTrucks**, which specializes in camper
+**Travel Trucks** is a web application for the company **TravelTrucks**, which specializes in camper
 rentals.
 
 ## Features
