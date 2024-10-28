@@ -9,7 +9,6 @@ import Button from '../Button/Button';
 import css from './BookForm.module.css';
 import Textarea from '../Textarea/Textarea';
 
-// toDo - move
 const validationSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Please enter at least 3 characters.').required('Required field'),
   email: Yup.string()

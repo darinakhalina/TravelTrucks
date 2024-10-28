@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import css from './CamperDetails.module.css';
+import { formatMeasurement } from '../../utils/formatMeasurement';
 
 const CamperDetails = ({ camper }) => {
   return (
@@ -13,19 +14,23 @@ const CamperDetails = ({ camper }) => {
         </li>
         <li className={css['camper-details-item']}>
           <span>Length</span>
-          <span className={css['camper-details-item-data']}>{camper.length}</span>
+          <span className={css['camper-details-item-data']}>
+            {formatMeasurement(camper.length)}
+          </span>
         </li>
         <li className={css['camper-details-item']}>
           <span>Width</span>
-          <span className={css['camper-details-item-data']}>{camper.width}</span>
+          <span className={css['camper-details-item-data']}>{formatMeasurement(camper.width)}</span>
         </li>
         <li className={css['camper-details-item']}>
           <span>Heigth</span>
-          <span className={css['camper-details-item-data']}>{camper.height}</span>
+          <span className={css['camper-details-item-data']}>
+            {formatMeasurement(camper.height)}
+          </span>
         </li>
         <li className={css['camper-details-item']}>
           <span>Tank</span>
-          <span className={css['camper-details-item-data']}>{camper.tank}</span>
+          <span className={css['camper-details-item-data']}>{formatMeasurement(camper.tank)}</span>
         </li>
         <li className={css['camper-details-item']}>
           <span>Consumption</span>
