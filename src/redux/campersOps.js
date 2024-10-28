@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getCampersApi, getCamperApi } from '../api/campers-api';
+import { INITIAL_PAGE, PAGE_LIMIT } from '../constants/constants';
 
 export const fetchCampers = createAsyncThunk(
   'campers/fetchAll',
-  async ({ page = 1, limit = 5, params = {} }, thunkAPI) => {
+  async ({ page = INITIAL_PAGE, limit = PAGE_LIMIT, params = {} }, thunkAPI) => {
     const queryParams = buildQueryParams(page, limit, params);
 
     try {
@@ -17,7 +18,7 @@ export const fetchCampers = createAsyncThunk(
 
 export const fetchMoreCampers = createAsyncThunk(
   'campers/fetchMore',
-  async ({ page = 1, limit = 5, params = {} }, thunkAPI) => {
+  async ({ page = INITIAL_PAGE, limit = PAGE_LIMIT, params = {} }, thunkAPI) => {
     const queryParams = buildQueryParams(page, limit, params);
 
     try {

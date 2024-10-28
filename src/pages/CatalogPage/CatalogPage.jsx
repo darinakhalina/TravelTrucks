@@ -15,7 +15,7 @@ const CatalogPage = () => {
 
   useEffect(() => {
     const fetchCampersLocal = async () => {
-      dispatch(setCurrentPage(1));
+      dispatch(setCurrentPage(INITIAL_PAGE));
       await dispatch(fetchCampers({ page: INITIAL_PAGE, limit: PAGE_LIMIT }));
     };
     fetchCampersLocal();

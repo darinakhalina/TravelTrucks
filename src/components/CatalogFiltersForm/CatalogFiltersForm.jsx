@@ -20,7 +20,7 @@ function CatalogFiltersForm() {
   const onSubmit = async filters => {
     dispatch(clearItemsState());
     dispatch(setFilters(filters));
-    dispatch(setCurrentPage(1));
+    dispatch(setCurrentPage(INITIAL_PAGE));
     await dispatch(fetchCampers({ page: INITIAL_PAGE, limit: PAGE_LIMIT, params: filters }));
   };
 
