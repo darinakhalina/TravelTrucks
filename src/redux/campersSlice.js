@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchCampers, fetchCamper, fetchMoreCampers } from './campersOps';
+import { INITIAL_PAGE } from '../constants/constants';
 
 const initialState = {
   selectedItem: null,
@@ -26,7 +27,7 @@ const campersSlice = createSlice({
       state.currentPage = payload;
     },
     resetCurrentPage: state => {
-      state.currentPage = 1; // add const here for page
+      state.currentPage = INITIAL_PAGE;
     },
   },
   extraReducers: builder => {

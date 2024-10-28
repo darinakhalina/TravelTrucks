@@ -7,6 +7,7 @@ import { clearFilters } from '../../redux/filtersSlice';
 import CatalogFiltersForm from '../../components/CatalogFiltersForm/CatalogFiltersForm';
 import CampersLoadMoreButton from '../../components/CampersLoadMoreButton/CampersLoadMoreButton';
 import CampersList from '../../components/CampersList/CampersList';
+import { INITIAL_PAGE, PAGE_LIMIT } from '../../constants/constants';
 import css from './CatalogPage.module.css';
 
 const CatalogPage = () => {
@@ -15,7 +16,7 @@ const CatalogPage = () => {
   useEffect(() => {
     const fetchCampersLocal = async () => {
       dispatch(setCurrentPage(1));
-      await dispatch(fetchCampers({ page: 1, limit: 5 })); // add consts for first page and limits
+      await dispatch(fetchCampers({ page: INITIAL_PAGE, limit: PAGE_LIMIT }));
     };
     fetchCampersLocal();
 

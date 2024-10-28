@@ -7,9 +7,10 @@ import { setFilters } from '../../redux/filtersSlice';
 import { selectFilters, selectIsLoading } from '../../redux/selectors';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
-import css from './CatalogFiltersForm.module.css';
 import Checkbox from '../Checkbox/Checkbox';
 import Radio from '../Radio/Radio';
+import { INITIAL_PAGE, PAGE_LIMIT } from '../../constants/constants';
+import css from './CatalogFiltersForm.module.css';
 
 function CatalogFiltersForm() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function CatalogFiltersForm() {
     dispatch(clearItemsState());
     dispatch(setFilters(filters));
     dispatch(setCurrentPage(1));
-    await dispatch(fetchCampers({ page: 1, limit: 5, params: filters }));
+    await dispatch(fetchCampers({ page: INITIAL_PAGE, limit: PAGE_LIMIT, params: filters }));
   };
 
   return (

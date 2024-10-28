@@ -12,7 +12,6 @@ import BookForm from '../../components/BookForm/BookForm.jsx';
 import CamperInfoFeatures from '../../components/CamperInfoFeatures/CamperInfoFeatures.jsx';
 import CamperInfoReviews from '../../components/CamperInfoReviews/CamperInfoReviews.jsx';
 
-// toDo - move
 const tabsData = [
   { id: 'features', label: 'Features' },
   { id: 'reviews', label: 'Reviews' },

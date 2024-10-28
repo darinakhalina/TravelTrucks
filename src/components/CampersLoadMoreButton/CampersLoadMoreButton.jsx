@@ -9,6 +9,7 @@ import {
   selectFilters,
 } from '../../redux/selectors';
 import Button from '../Button/Button';
+import { PAGE_LIMIT } from '../../constants/constants';
 import css from './CampersLoadMoreButton.module.css';
 
 const CampersLoadMoreButton = () => {
@@ -22,7 +23,9 @@ const CampersLoadMoreButton = () => {
   const onMore = async () => {
     const nextPage = cuttentPage + 1;
     dispatch(setCurrentPage(nextPage));
-    await dispatch(fetchMoreCampers({ page: nextPage, limit: 5, params: filtersFromStore }));
+    await dispatch(
+      fetchMoreCampers({ page: nextPage, limit: PAGE_LIMIT, params: filtersFromStore })
+    );
   };
 
   if (campers.length >= total) {
